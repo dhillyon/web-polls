@@ -38,14 +38,16 @@
             const addButton = document.getElementById('add')
             const buttons = document.getElementById('buttons')
             const form = document.querySelector('form')
+            var labelCount = 2
 
             addButton.addEventListener('click', addNewOption)
             
             function addNewOption() {
+                labelCount ++
                 const newNode = document.createElement('label')
                 form.insertBefore(newNode, buttons)
                 document.querySelector('label:last-of-type').innerHTML = '<i class="fa-solid fa-arrow-right"></i>' + 
-                '<input type="text" required class="options" placeholder="..."/>'
+                '<input type="text" required class="options" placeholder="Option ' + labelCount+ '"/>'
             }
 
             async function funcSubmit(e) {
