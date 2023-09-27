@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    transition-duration: 300ms ;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color:  #FFDAB9;
+    color: white;
+}
+
+i {
+    color: #444444;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    max-width: 900px;
+    width: 90vw;
+}
+
+form h1 {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #444444;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+    text-align: center;
+    user-select: none;
+    margin: 32px 0;
+}
+
+form > input,
+form label,
+form label input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    color: #444444;
+    padding: 6px 4px;
+    border: none;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+form div div {
+    color: #444444;
+    cursor: pointer;
+    width: fit-content;
+}
+
+form div div:hover {
+    transform: scale(1.25);
+}
+
+form div input {
+    width: 100%;
+    background-color: #444444;
+    color: #FAF0E6;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 18px auto;
+}
+
+form div input:hover {
+    background: transparent;
+    color: #444444;
+}
+
+#question {
+    border: 1px solid transparent;
+    border-bottom:1px solid #444444;
+    margin: 4px 0 12px 0;
+    font-size: 1.2rem;
+    padding: 14px 12px;
+}
+
+#question:focus {
+    border: 1px solid #444444;
+}
+
+#question:hover {
+    opacity: 0.8;
+}
+
+.options {
+    position: relative;
+    padding-left: 20px;
+    flex: 1;
+    color: #444444;
+    border-bottom: 1px solid transparent;
+    padding: 6px 3px;
+}
+
+.options:hover {
+    border-bottom: 1px solid #556B2F;
+}
+
+form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
