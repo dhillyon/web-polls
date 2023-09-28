@@ -15,8 +15,6 @@ app.post("/", (request, response) => {
         response.status(400).send({status:"error"})
     }
 
-    console.log(id, question, options)
-
     const currentPolls = readDb()
     writeDb({
         ...currentPolls,
@@ -39,13 +37,19 @@ app.get('/ids', (request, response) => {
 
 app.get('/:id', (request, response) => {
     const {id} = request.params
-    console.log(id)
     try {
         return response.status(200).sendFile('poll.html', {root: __dirname + '/public'})
     } catch (err) {
         console.error(err)
         response.sendStatus(500)
     }
+})
+
+app.get('/data/:id', (request, response) => {
+    const {id} = request.params
+    const data = readDb()[id]
+
+    response.status(200).send({data})
 })
 
 app.listen(port, () => console.log('Server running on port ' + port))

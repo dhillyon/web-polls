@@ -21,7 +21,7 @@ function addNewOption() {
 
 async function funcSubmit(e) {
     const question = document.getElementById('question').value 
-    const options = Array.from(document.querySelectorAll('.options')).map(option => option.value)
+    const options = new Set([...Array.from(document.querySelectorAll('.options')).map(option => option.value)])
     
     const idsRes = await fetch('/ids')
     const {ids} = await idsRes.json()
@@ -38,4 +38,6 @@ async function funcSubmit(e) {
             options
         })
     })
+
+    window.location.href = `/${id}`
 }
