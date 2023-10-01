@@ -13,10 +13,12 @@ body {
     min-height: 100vh;
     background-color:  #FFDAB9;
     color: #444444;
+    padding: 8px
 }
 
 main {
     max-width: 800px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -25,8 +27,23 @@ main {
     gap: 20px;
 }
 
+footer {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+footer:hover {
+    color:#FAF0E6
+}
+
 i {
     color: #444444;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 form {
@@ -47,6 +64,7 @@ h1 {
     text-align: center;
     user-select: none;
     margin: 32px 0;
+    width: 100%;
 }
 
 form > input,
@@ -62,11 +80,12 @@ form label input {
 
 form div {
     display: flex;
+    flex: 1;
     flex-direction: column;
     width: 100%;
     gap: 5px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 form div div {
@@ -123,6 +142,15 @@ form div input:hover {
 
 .options:hover {
     border-bottom: 1px solid #556B2F;
+}
+
+#url {
+    background: #FAF0E6;
+    color: #444444;
+    place-items: center;
+    padding: 2px 4px;
+    margin: 4px auto;
+    font-size: large;
 }
 
 form label {

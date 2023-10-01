@@ -15,57 +15,11 @@
         <h1></h1>
         <ul id="options"></ul>
     </main>
+    <div id="url">
 
-    <script>
-        const id = window.location.pathname.replaceAll('/', '')
+    </div>
+    <footer><a href="/"><i class="fa-solid fa-house"></i></a></footer>
 
-        const question = document.querySelector('main > h1')
-        const optionsList = document.querySelector('ul')
-        let optionsFromServer = []
-        
-        // Redirects to homepage if ID is invalid
-        async function onLoad() {
-            const idsRes = await fetch('/ids')
-            const {ids} = await idsRes.json()
-
-            if (!ids.includes(id)) {
-                window.location.href = '/'
-            }
-
-            const response = await fetch('/data/' + id) 
-            const {data} = await response.json()
-
-            optionsFromServer = data.options
-            question.innerText = data.question + (data.question.includes('?') ? '' : '?')
-
-            let newInnerListHTML = ''
-            Object.keys(data.options).forEach((option, index) => {
-                newInnerListHTML += `<li id="${option}"><i class="fa-solid fa-arrow-right"></i>${option}</li>`
-            })
-
-            optionsList.innerHTML = newInnerListHTML
-            const optionsLi = document.querySelectorAll('li')
-            optionsLi.forEach(option => {
-                option.addEventListener('click', clicked)
-            })
-        }
-        onLoad()
-        
-        function clicked(index) {
-            const selected = index.target.id
-            const maxNumberOfVotes = Math.max(...Object.values(optionsFromServer))
-            const optionsLi = document.querySelectorAll('li')
-            optionsLi.forEach(val => {
-                const option = val.id
-                val.removeEventListener('click', clicked) 
-                val.style.background = `white`
-
-                if (maxNumberOfVotes !== 0) {
-                    val.style.width = optionsFromServer[`${option}`] === 0 ? '5%' : `
-                    ${(optionsFromServer[option] / maxNumberOfVotes)*100}%`
-                }
-            })
-        }
-    </script>
+    <script src="poll.js"></script>
 </body>
 </html>

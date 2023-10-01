@@ -20,14 +20,17 @@ function addNewOption() {
 }
 
 async function funcSubmit(e) {
+    e.preventDefault()
+    
     const question = document.getElementById('question').value 
-    const options = new Set([...Array.from(document.querySelectorAll('.options')).map(option => option.value)])
+    const options = Array.from(document.querySelectorAll('.options')).map(option => option.value)
+    const uniqueOptions = [...new Set(options)]
     
     const idsRes = await fetch('/ids')
     const {ids} = await idsRes.json()
     const id = ids.length === 0 ? 1: Math.max(...ids) + 1
 
-    const result = await fetch('/', {
+    const response = await fetch('/', {
         method: 'POST',
         headers: {
             "Content-type": "application/json"
@@ -35,9 +38,13 @@ async function funcSubmit(e) {
         body: JSON.stringify({
             id,
             question,
-            options
+            options: uniqueOptions
         })
     })
 
-    window.location.href = `/${id}`
+    if (response.redirected) {
+        window.location.href = `/${id}`
+    }
+    
+    return
 }

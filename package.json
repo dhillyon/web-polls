@@ -4,14 +4,15 @@
   "description": "A full stack web application for creating and hosting online polls.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js --ignore *.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "firebase-admin": "^11.11.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
